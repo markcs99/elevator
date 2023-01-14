@@ -1,0 +1,19 @@
+<div>
+  <h1>Elevator Component</h1>
+  <p>Current Floor: {{ elevator.currentFloor }}</p>
+  <p>Destination Floor: {{ elevator.destinationFloor }}</p>
+  <p>Queue: {{ elevator.floorQueue }}</p>
+</div>
+<div>
+  <label for="floorInput">Request Floor:</label>
+  <input type="number" id="floorInput" #floorInput>
+  <button (click)="requestFloor(floorInput.value)">Request Floor</button>
+  <button (click)="startElevator()">Start Elevator</button>
+
+  <div>
+    <h2>Elevator Logs:</h2>
+    <ul>
+      <li *ngFor="let log of logs">{{ log }}</li>
+    </ul>
+  </div>
+</div>
