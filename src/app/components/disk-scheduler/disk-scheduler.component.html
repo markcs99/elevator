@@ -1,0 +1,16 @@
+<div *ngIf="seekSequence.length">
+  <p>Total number of seek operations = {{ seekCount }}</p>
+  <p>Seek Sequence is</p>
+  <ul>
+    <li *ngFor="let track of seekSequence">{{ track }}</li>
+  </ul>
+</div>
+
+<div>
+  <label>Head: <input [(ngModel)]="head"></label>
+</div>
+<div>
+  <label>Requests: <input [(ngModel)]="requests"></label>
+</div>
+
+<button (click)="onScan()">SCAN</button>

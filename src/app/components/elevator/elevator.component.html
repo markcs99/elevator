@@ -1,0 +1,22 @@
+<div>
+  <div>
+    <label>Starting position:</label>
+    <input [(ngModel)]="currentFloor" placeholder="Enter floor number">
+  </div>
+  <h2>{{currentFloor}}</h2>
+  <h3>{{direction}}</h3>
+  <h3>{{occupied}}</h3>
+  <div>
+    <label>Floor:</label>
+    <input [(ngModel)]="floor" placeholder="Enter floor number">
+  </div>
+  <div>
+    <label>Direction:</label>
+    <select [(ngModel)]="direction">
+      <option value="up">Up</option>
+      <option value="down">Down</option>
+    </select>
+  </div>
+  <button (click)="requestFloor(floor, direction)">Request Floor</button>
+  <button (click)="start()">Start</button>
+</div>
