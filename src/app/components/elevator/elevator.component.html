@@ -3,9 +3,11 @@
     <label>Starting position:</label>
     <input [(ngModel)]="currentFloor" placeholder="Enter floor number">
   </div>
-  <h2>{{currentFloor}}</h2>
-  <h3>{{direction}}</h3>
-  <h3>{{occupied}}</h3>
+  <div >
+    <h2>Elevator is on floor: {{currentFloor}}</h2>
+    <h3>Heading direction: {{direction}}</h3>
+    <h3>Occupied: {{occupied}}</h3>
+  </div>
   <div>
     <label>Floor:</label>
     <input [(ngModel)]="floor" placeholder="Enter floor number">

@@ -18,8 +18,13 @@ export class DiskSchedulerComponent implements OnInit {
   seekCount = 0;
   seekSequence: number[] = [];
 
-  onScan() {
+  onScanValues() {
+    this.direction = 'left';
+    this.seekCount = 0;
+    this.seekSequence = [];
 
+    let requests = this.requests.map(r => Number(r)).filter(r => !isNaN(r));
+    let head = Number(this.head);
     let left = [], right = [];
 
     // appending end values which has to be visited before reversing the direction
@@ -29,12 +34,12 @@ export class DiskSchedulerComponent implements OnInit {
       right.push(200 - 1);
     }
 
-    for (let i = 0; i < this.requests.length; i++) {
-      if (this.requests[i] < this.head) {
-        left.push(this.requests[i]);
+    for (let i = 0; i < requests.length; i++) {
+      if (requests[i] < head) {
+        left.push(requests[i]);
       }
-      if (this.requests[i] > this.head) {
-        right.push(this.requests[i]);
+      if (requests[i] > head) {
+        right.push(requests[i]);
       }
     }
 
@@ -53,13 +58,13 @@ export class DiskSchedulerComponent implements OnInit {
           this.seekSequence.push(curTrack);
 
           // calculate absolute distance
-          let distance = Math.abs(curTrack - this.head);
+          let distance = Math.abs(curTrack - head);
 
           // increase the total count
           this.seekCount += distance;
 
           // accessed track is now the new head
-          this.head = curTrack;
+          head = curTrack;
         }
         this.direction = 'right';
       } else if (this.direction == 'right') {
@@ -70,13 +75,13 @@ export class DiskSchedulerComponent implements OnInit {
           this.seekSequence.push(curTrack);
 
           // calculate absolute distance
-          let distance = Math.abs(curTrack - this.head);
+          let distance = Math.abs(curTrack - head);
 
           // increase the total count
           this.seekCount += distance;
 
           // accessed track is now new head
-          this.head = curTrack;
+          head = curTrack;
         }
         this.direction = 'left';
       }
