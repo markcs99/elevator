@@ -1,8 +1,11 @@
 <div>
-  <h1>Elevator Component</h1>
+  <h1>Elevator with closest algo</h1>
   <p>Current Floor: {{ elevator.currentFloor }}</p>
   <p>Destination Floor: {{ elevator.destinationFloor }}</p>
-  <p>Queue: {{ elevator.floorQueue }}</p>
+  <p>Queue:</p>
+  <ul>
+    <li *ngFor="let item of elevator.floorQueue">{{ item }}</li>
+  </ul>
 </div>
 <div>
   <label for="floorInput">Request Floor:</label>
@@ -11,7 +14,7 @@
   <button (click)="startElevator()">Start Elevator</button>
 
   <div>
-    <h2>Elevator Logs:</h2>
+    <h1>Elevator Logs:</h1>
     <ul>
       <li *ngFor="let log of logs">{{ log }}</li>
     </ul>
